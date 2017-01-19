@@ -7,9 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head
          content must come *after* these tags -->
-    <title>Ristorante Con Fusion: Menu</title>
+    <title>ResourceR</title>
         <!-- Bootstrap -->
-    <link rel="stylesheet" href="styles/main-6955cb7e84.css"/>
+    <link rel="stylesheet" href="styles/main-c45a6c6afa.css"/>
+     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,10 +23,51 @@
     
 </head>
 
-<body>
+<body ng-controller="MenuController ">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="col-xs-12 ">
+                <div class="navbar-header" align="center"><h1>ResourceR <span class="badge" >BLR FSI</span></h1>
+                </div>
+            </div>
+          
+        </div>
+    </nav>
+     <div id="aboutMeModal" class="modal fade" role="dialog" >
+         
+        <div class="modal-dialog " style="width:700px" ng-repeat="asso1 in team|filter:{'name':assoSelected()}">
+        <!-- Modal content-->
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> About {{asso1.name}} </h4>
+            </div>
+            <div class="modal-body "  >
+                <dl class="dl-horizontal" ng-repeat="interface in asso1.interfaces">
+                <dt>Interface</dt>
+                <dd>{{interface.name}}</dd>
+                    <dt>Interface Description</dt>
+                <dd>{{interface.description}}</dd>
+                    <dt>Interface Status</dt>
+                <dd>{{interface.status}}</dd>
+                     <dt>Interface clients</dt>
+                <dd ng-repeat="client in interface.clients">{{client}}</dd>
+                    </dl>
+          
+                </div>
+                <div class="modal-footer">
+                
+                      <button type="button" class="btn btn-default btn-sm btn-center" data-dismiss="modal">Cancel</button>
+                </div>
+
+            
+        </div>
+        </div>
+    </div>
+ 
 
     <div class="container">
-        <div class="row row-content" ng-controller="MenuController ">
+        <div class="row row-content"  ">
             <div class="col-xs-12">
               <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" ng-class="{active:isSelected(1)}">
@@ -50,24 +94,67 @@
                         
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{asso.name}}<span class="label label-danger">{{asso.nextWeeksAvail}}</span><span class="badge">{{asso.quartersAvail}}</span></h2>
-                        <div class="progress col-xs-6">
-                        <div class="progress-bar  " role="progressbar" aria-valuenow="70" style="width:70%">
-                        <span class="sr-only">70% Complete</span>70%
+                        <h2 class="media-heading">{{asso.name}}<span >  </span><span class="badge">   {{asso.designation}}</span></h2>
+                        <div class="col-md-3 col-xs-12">
+                            Next Week's Availability:
+                        <div class="progress">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar"  style="width:{{asso.nextWeeksAvail/40*100}}%">
+                         {{(asso.nextWeeksAvail/40*100).toFixed(1)}}%
                         </div>
-  </div>
-                        <p ng-show="showDetails" ng-repeat="interface in asso.interfaces"></p>
-                        
-                    </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xs-12 ">
+                            Quarter's Availability:
+                        <div class="progress ">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:{{asso.quartersAvail/520*100}}%">
+                        {{(asso.quartersAvail/520*100).toFixed(1)}}%
+                        </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12  col-md-offset-1">
+                                   
+                      
+                    
+                    <a type="button" class="btn btn-success" href="mailto:{{asso.email}}?Subject=Project%20Name:&amp;cc={{asso.ManagersEmail}}&amp;body=Send%20Via%20ResourceR:"><i class="fa fa-envelope-o"></i><span> </span> Assign Project </a>
+                           
+                        </div>
+                        <div class="col-md-2 col-xs-12  col-md-offset-1">
+                                   
+                     
+                    
+                  <!-- Trigger the modal with a button -->
+  
+      <a type="button" data-toggle="modal" data-target="#aboutMeModal" ng-click="selectAsso(asso.name)" >
+       <h4>  <span class="glyphicon glyphicon-user"></span>About Me</h4> 
+        </a>
+                            
+                        </div>
+               
+
+            
+                        </div>
+                       <!-- <p ng-show="showDetails" ng-repeat="interface in asso.interfaces"></p> -->  
+                   
                 </li>
                     </div>
                     </ul>
-                
-            </div>
+                   </div>
         </div>
     </div>
+       <footer class="row-footer">
+        <div class="container">
+            <div class="row">      
+             
+                <div class="col-xs-12">
+                     
+                   
+                    <h4 align="center">© Karan Jariwala and Akash Verma </h4>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
- <script src="scripts/main-c3f0e67c27.js"></script>
+ <script src="scripts/main-77a4970a2c.js"></script>
     
 </html>

@@ -3,6 +3,7 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
   $scope.tab = 1;
   $scope.filtText = 'clinical';
    $scope.showDetails = true;
+    $scope.assoFilt ='Akash';
   
   var team = [{
       name:'Karan',
@@ -10,8 +11,9 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
       email:'karan.jariwala@cerner.com',
       track: ['data','clinical','Bridge'],
       ManagersEmail:'sharath.huruli@cerner.com',
-      nextWeeksAvail:40,
-      quartersAvail :'300',
+      nextWeeksAvail:20,
+      quartersAvail :300,
+      designation: 'System Engineer',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -54,11 +56,12 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
      {
          name:'Akash',
       image: 'images/akash.png',
-      email:'karan.jariwala@cerner.com',
+      email:'Akash.Verma@cerner.com',
       track: ['financial'],
       ManagersEmail:'sharath.huruli@cerner.com',
       nextWeeksAvail:'40',
       quartersAvail :'300',
+      designation: 'System Engineer',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -102,11 +105,12 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
      {
          name:'Neha',
       image: 'images/neha.png',
-      email:'karan.jariwala@cerner.com',
+      email:'Neha.Singh@cerner.com',
       track: ['financial'],
       ManagersEmail:'sharath.huruli@cerner.com',
       nextWeeksAvail:'40',
       quartersAvail :'300',
+      designation: 'System Engineer',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -149,11 +153,12 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
      {
           name:'Archit',
       image: 'images/archit.png',
-      email:'karan.jariwala@cerner.com',
+      email:'Archit.Gupta@cerner.com',
       track: ['data','clinical'],
       ManagersEmail:'sharath.huruli@cerner.com',
       nextWeeksAvail:'40',
       quartersAvail :'300',
+       designation: 'System Engineer',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -195,13 +200,14 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
          
      },
      {
-         name:'rahul',
+         name:'Rahul',
       image: 'images/rahul.png',
-      email:'karan.jariwala@cerner.com',
+      email:'Rahul.Sawhney@cerner.com',
       track: ['clinical','bridge'],
       ManagersEmail:'sharath.huruli@cerner.com',
       nextWeeksAvail:'40',
       quartersAvail :'300',
+      designation: 'System Engineer',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -242,13 +248,14 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
                         }]
      },
      {
-         name:'sharath',
+         name:'Sharath',
       image: 'images/uthapizza.png',
-      email:'karan.jariwala@cerner.com',
+      email:'Sharath.Huruli@cerner.com',
       track: ['data','clinical'],
       ManagersEmail:'sharath.huruli@cerner.com',
       nextWeeksAvail:'40',
       quartersAvail :'300',
+      designation: 'Team Lead',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -289,13 +296,14 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
                         }]
      },
      {
-         name:'niru',
+         name:'Niru',
       image: 'images/uthapizza.png',
-      email:'karan.jariwala@cerner.com',
+      email:'Niru.Kumari@cerner.com',
       track: ['financial'],
       ManagersEmail:'sharath.huruli@cerner.com',
       nextWeeksAvail:'40',
       quartersAvail :'300',
+      designation: 'System Engineer',
       interfaces:[{name:'AP History Upload',
 		          description:'Uploading AP data',
 		          category: 'Data Migration',
@@ -338,6 +346,19 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
     
   ; 
   
+    $scope.selectAsso =function(name)
+    {  
+        
+        $scope.assoFilt=name;
+       // console.log($scope.assoFilt);
+    };
+       $scope.assoSelected =function()
+    {
+           console.log($scope.assoFilt)
+        return $scope.assoFilt;
+        
+    };
+    
     $scope.team = team;
     $scope.hours;
     
@@ -373,9 +394,12 @@ angular.module('confusionApp', []).controller('MenuController',['$scope', functi
    {
        return ((Number($scope.hours)/40)*100)
    }
+   
     
   
   
     
 
 }]);
+
+
